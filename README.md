@@ -1,6 +1,8 @@
-# Cewi/Excel plugin for CakePHP 
+# kuebel/excel plugin for CakePHP 
 
 The plugin is based on the work of [dakota](https://github.com/dakota/CakeExcel) and uses [PHPSpreadsheet](https://github.com/PHPOffice/PHPSpreadsheet) for the excel-related functionality. 
+
+This is a fork of [cewi/excel](https://github.com/cewi/excel) to make it CakePHP 4 compatible.
 
 ## Installation
 
@@ -13,14 +15,14 @@ add
 "repositories": [
 	{
 		"type": "vcs",
-		"url": "https://github.com/cewi/excel"
+		"url": "https://github.com/kuebel/excel"
 	}
 ] 
 ```
 to your composer.json because this package is not on packagist. Then in your console:
 
 ```
-composer require cewi/excel:dev-phpspreadsheet
+composer require kuebel/excel:dev-cakephp4
 ```
 
 should fetch the plugin. 
