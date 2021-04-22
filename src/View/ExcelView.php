@@ -5,6 +5,7 @@ namespace Cewi\Excel\View;
 use Cake\Core\Configure;
 use Cake\Core\Exception\Exception;
 use Cake\Event\EventManager;
+use Cake\Http\ServerRequest;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\Utility\Text;
@@ -48,18 +49,22 @@ class ExcelView extends View
      */
     public $currentSheetIndex = null;
 
+
     /**
      * Constructor
      *
-     * @param \Cake\Network\Request $request Request instance.
-     * @param \Cake\Network\Response $response Response instance.
-     * @param \Cake\Event\EventManager $eventManager Event manager instance.
+     * @param \Cake\Http\ServerRequest|null $request Request instance.
+     * @param \Cake\Http\Response|null $response Response instance.
+     * @param \Cake\Event\EventManager|null $eventManager Event manager instance.
      * @param array $viewOptions View options. See View::$_passedVars for list of
      *   options which get set as class properties.
-     *
-     * @throws \Cake\Core\Exception\Exception
      */
-    public function __construct(Request $request = null, Response $response = null, EventManager $eventManager = null, array $viewOptions = [])
+    public function __construct(
+        ?ServerRequest $request = null,
+        ?\Cake\Http\Response $response = null,
+        ?EventManager $eventManager = null,
+        array $viewOptions = []
+    )
     {
         parent::__construct($request, $response, $eventManager, $viewOptions);
 
@@ -82,7 +87,7 @@ class ExcelView extends View
      * Initialization hook method.
      * Load the Helper
      */
-    public function initialize()
+    public function initialize():void
     {
         parent::initialize();
         $this->setLayout('default');
@@ -97,7 +102,7 @@ class ExcelView extends View
      * @param  [type] $file   [description]
      * @return [type]         [description]
      */
-    public function render($action = null, $layout = null, $file = null)
+    public function render($action = null, $layout = null, $file = null):string
     {
         $content = parent::render($action, false, $file);
         if ($this->response->getType() == 'text/html') {

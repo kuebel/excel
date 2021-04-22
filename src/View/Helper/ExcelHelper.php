@@ -123,6 +123,11 @@ class ExcelHelper extends Helper
     {
         /* Extract keys from first item */
         $first = $collection->first();
+
+        if ($first == null) {
+            return [];
+        }
+
         if (is_array($first)) {
             $data = [array_keys($first)];
         } else {
@@ -243,7 +248,7 @@ class ExcelHelper extends Helper
 
         return;
     }
-    
+
     /**
      * Set the Name of Excel-File
      *
