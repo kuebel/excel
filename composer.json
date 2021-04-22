@@ -1,28 +1,33 @@
 {
-    "name": "Cewi/Excel",
-    "description": "Excel plugin for CakePHP 3",
+    "name": "kuebel/excel",
+    "description": "Excel plugin for CakePHP 4",
     "type": "cakephp-plugin",
     "keywords": [
         "cakephp",
         "excel"
     ],
-    "homepage": "https://github.com/cewi/excel",
+    "homepage": "https://github.com/kuebel/excel",
     "license": "MIT",
     "authors": [
         {
             "name": "Cornelius Wichmann",
             "role": "Author"
+        },
+        {
+            "name": "Thomas Lehrer",
+            "role": "Author"
         }
+
     ],
     "support": {
         "issues": "https://github.com/cewi/excel/issues",
         "source": "https://github.com/cewi/excel"
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=7.0",
         "cakephp/plugin-installer": "*",
-        "cakephp/cakephp": "~3.0",
-        "phpoffice/phpspreadsheet": "^1.2"
+        "cakephp/cakephp": "~4.0",
+        "phpoffice/phpspreadsheet": "^1.17"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
