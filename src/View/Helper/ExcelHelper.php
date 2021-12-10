@@ -200,6 +200,12 @@ class ExcelHelper extends Helper
 
             return;
         }
+
+        // Don't export NULL as 0, do nothing
+        if ($cell === null) {
+            return;
+        }
+
         if ($cell instanceof Date || $cell instanceof Time || $cell instanceof FrozenDate || $cell instanceof FrozenTime) {
             $cell = $cell->toUnixString(); // Dates must be converted in unix
             $coordinate = $this->_View->PHPSpreadsheet
