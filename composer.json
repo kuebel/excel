@@ -1,6 +1,6 @@
 {
     "name": "kuebel/excel",
-    "description": "Excel plugin for CakePHP 4",
+    "description": "Excel plugin for CakePHP 4 and 5",
     "type": "cakephp-plugin",
     "keywords": [
         "cakephp",
@@ -24,10 +24,10 @@
         "source": "https://github.com/cewi/excel"
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.2",
         "cakephp/plugin-installer": "*",
-        "cakephp/cakephp": "~4.0",
-        "phpoffice/phpspreadsheet": "^1.17"
+        "cakephp/cakephp": "~5.0",
+        "phpoffice/phpspreadsheet": "^4.*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

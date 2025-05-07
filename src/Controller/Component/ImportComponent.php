@@ -52,7 +52,7 @@ class ImportComponent extends Component
      * @return array The Array has the same structure as provided by request->data
      * @throws MissingTableClassException
      */
-    public function prepareEntityData($file = null, array $options = [])
+    public function prepareEntityData($file = null, array $options = []): array
     {
 
         /**  load and configure \PhpOffice\PhpSpreadsheet\SpreadsheetReader  * */
@@ -63,7 +63,7 @@ class ImportComponent extends Component
         $PhpExcelReader->setReadDataOnly(true);
 
         if ($fileType !== 'CSV') {  // csv-files can have only one 'worksheet'
-            
+
             /** identify worksheets in file * */
             $worksheets = $PhpExcelReader->listWorksheetNames($file);
 
@@ -95,23 +95,23 @@ class ImportComponent extends Component
 
         foreach ($data as $row) {
             $record = array_combine($properties, $row);
-            
-            // we'll take modified date from the moment importing records 
+
+            // we'll take modified date from the moment importing records
             // @TODO: Should that behavior be made configurable?
             if (isset($record['modified'])) {
                 unset($record['modified']);
             }
-            
-            // when appending remove pk 
+
+            // when appending remove pk
             if (isset($options['type']) && $options['type'] == 'append' && isset($record['id'])) {
                 unset($record['id']);
             }
-            
+
             // sometimes PHPSpreadsheet casts ids as float
             if (isset($record['id'])){
                 $record['id'] = (int) $record['id'];
             }
-            
+
             $result[] = $record;
         }
 

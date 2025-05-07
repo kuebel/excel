@@ -73,7 +73,7 @@ class ExcelHelper extends Helper
         if (isset($config['dateformat'])) {
             $this->__dateformat = $config['dateformat'];
         } else {
-            $this->__dateformat = Configure::read('excel.dateformat');
+            $this->__dateformat = Configure::read('excel.dateformat', $this->__dateformat);
         }
     }
 
@@ -108,8 +108,6 @@ class ExcelHelper extends Helper
         foreach (range('A', $highestColumn) as $column) {
             $this->_View->PHPSpreadsheet->getActiveSheet()->getColumnDimension($column)->setAutoSize(true);
         }
-
-        return;
     }
 
     /**
@@ -153,7 +151,7 @@ class ExcelHelper extends Helper
      * @param Entity $entity
      * @return array
      */
-    public function prepareEntityData(Entity $entity = null)
+    public function prepareEntityData(Entity $entity = null): array
     {
         $entityArray = $entity->toArray();
         $data = [array_keys($entityArray)];
@@ -180,8 +178,6 @@ class ExcelHelper extends Helper
             }
             $rowIndex++;
         }
-
-        return;
     }
 
     /**
@@ -233,8 +229,6 @@ class ExcelHelper extends Helper
             return;
         }
         $this->_View->PHPSpreadsheet->getActiveSheet()->getCellByColumnAndRow($columnIndex, $rowIndex)->setValueExplicit($cell, DataType::TYPE_NUMERIC);
-
-        return;
     }
 
     /**
@@ -251,8 +245,6 @@ class ExcelHelper extends Helper
         $this->_View->PHPSpreadsheet->getActiveSheet()->setTitle($title);
         $this->_View->PHPSpreadsheet->getProperties()->setTitle($title);
         $this->_View->PHPSpreadsheet->getProperties()->setSubject($title . ' ' . date('d.m.Y H:i'));
-
-        return;
     }
 
     /**
@@ -263,6 +255,5 @@ class ExcelHelper extends Helper
     public function setFilename($filename)
     {
         $this->_View->setFilename($filename);
-        return;
     }
 }
