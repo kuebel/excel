@@ -206,7 +206,7 @@ class ExcelHelper extends Helper
             $cell = $cell->toUnixString(); // Dates must be converted in unix
             $coordinate = $this->_View->PHPSpreadsheet
                 ->getActiveSheet()
-                ->getCellByColumnAndRow($columnIndex, $rowIndex)
+                ->getCell([$columnIndex, $rowIndex])
                 ->getCoordinate();
 
             $this->_View->PHPSpreadsheet
@@ -224,11 +224,11 @@ class ExcelHelper extends Helper
             return;
         }
         if (is_string($cell)) {
-            $this->_View->PHPSpreadsheet->getActiveSheet()->getCellByColumnAndRow($columnIndex, $rowIndex)->setValueExplicit($cell, DataType::TYPE_STRING);
+             $this->_View->PHPSpreadsheet->getActiveSheet()->getCell([$columnIndex, $rowIndex])->setValueExplicit($cell, DataType::TYPE_STRING);
 
             return;
         }
-        $this->_View->PHPSpreadsheet->getActiveSheet()->getCellByColumnAndRow($columnIndex, $rowIndex)->setValueExplicit($cell, DataType::TYPE_NUMERIC);
+        $this->_View->PHPSpreadsheet->getActiveSheet()->getCell([$columnIndex, $rowIndex])->setValueExplicit($cell, DataType::TYPE_NUMERIC);
     }
 
     /**

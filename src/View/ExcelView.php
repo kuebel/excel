@@ -40,7 +40,7 @@ class ExcelView extends View
      *
      * @var string
      */
-    public $subDir = 'xlsx';
+    public string $subDir = 'xlsx';
 
     /**
      * Pointer to the active sheet in the workbook
@@ -66,6 +66,8 @@ class ExcelView extends View
         array $viewOptions = []
     )
     {
+        $response = $response->withType('xlsx');
+
         parent::__construct($request, $response, $eventManager, $viewOptions);
 
         if (isset($viewOptions['templatePath']) && $viewOptions['templatePath'] == 'Error') {
@@ -75,6 +77,8 @@ class ExcelView extends View
 
             return;
         }
+
+
 
         // intitialize \PhpOffice\PhpSpreadsheet\Spreadsheet-Object
         Cell::setValueBinder(new AdvancedValueBinder());
