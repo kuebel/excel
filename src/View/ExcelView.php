@@ -71,8 +71,8 @@ class ExcelView extends View
         parent::__construct($request, $response, $eventManager, $viewOptions);
 
         if (isset($viewOptions['templatePath']) && $viewOptions['templatePath'] == 'Error') {
-            $this->layoutPath = null;
-            $this->subDir = null;
+            $this->layoutPath = '';
+            $this->subDir = '';
             $response->withType('html');
 
             return;
