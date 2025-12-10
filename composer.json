@@ -24,10 +24,10 @@
         "source": "https://github.com/cewi/excel"
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=8.1",
         "cakephp/plugin-installer": "*",
         "cakephp/cakephp": "~5.0",
-        "phpoffice/phpspreadsheet": "~4.0"
+        "phpoffice/phpspreadsheet": "~5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
@@ -41,6 +41,11 @@
         "psr-4": {
             "Cewi\\Excel\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "cakephp/plugin-installer": true
         }
     }
 }
